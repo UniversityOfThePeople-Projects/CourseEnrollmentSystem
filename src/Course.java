@@ -2,47 +2,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Course {
-    private String courseCode;
-    private String courseName;
+    private String code;
+    private String name;
     private int maxCapacity;
     private List<Student> enrolledStudents;
+    private static int totalEnrolled = 0;
 
-    // Static variable to keep track of the total number of students enrolled across all courses
-    private static int totalStudentsEnrolled = 0;
-
-    // Constructor
-    public Course(String courseCode, String courseName, int maxCapacity) {
-        this.courseCode = courseCode;
-        this.courseName = courseName;
+    public Course(String code, String name, int maxCapacity) {
+        this.code = code;
+        this.name = name;
         this.maxCapacity = maxCapacity;
         this.enrolledStudents = new ArrayList<>();
     }
 
-    // Getters
-    public String getCourseCode() {
-        return courseCode;
+    public String getCode() {
+        return code;
     }
 
-    public String getCourseName() {
-        return courseName;
+    public String getName() {
+        return name;
     }
 
     public int getMaxCapacity() {
         return maxCapacity;
     }
 
-    // Static method to get the total number of enrolled students
-    public static int getTotalStudentsEnrolled() {
-        return totalStudentsEnrolled;
-    }
-
-    // Method to enroll a student in the course
     public boolean enrollStudent(Student student) {
-        if (enrolledStudents.size() < maxCapacity) {
+        if (enrolledStudents.size() < maxCapacity && !enrolledStudents.contains(student)) {
             enrolledStudents.add(student);
-            totalStudentsEnrolled++;
+            student.enrollInCourse(this);
+            totalEnrolled++;
             return true;
         }
-        return false; // Course is full
+        return false;
+    }
+
+    public static int getTotalEnrolled() {
+        return totalEnrolled;
+    }
+
+    @Override
+    public String toString() {
+        return code + " - " + name;
     }
 }

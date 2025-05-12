@@ -1,30 +1,70 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        // Create a Course
-        Course javaCourse = new Course("CS101", "Intro to Java", 3);
+        Scanner scanner = new Scanner(System.in);
+        Student student = new Student("John Doe", 101); // Example student
 
-        // Create Students
-        Student student1 = new Student("Alice", 101);
-        Student student2 = new Student("Bob", 102);
+        while (true) {
+            System.out.println("\n=== Course Enrollment System ===");
+            System.out.println("1. Add Course");
+            System.out.println("2. Enroll Student");
+            System.out.println("3. Assign Grade");
+            System.out.println("4. Calculate Overall Grade");
+            System.out.println("5. View Enrolled Courses and Grades");
+            System.out.println("6. Exit");
+            System.out.print("Choose an option: ");
+            int choice = scanner.nextInt();
 
-        // Add Course to Course Management
-        CourseManagement.addCourse("CS101", "Intro to Java", 3);
-
-        // Enroll Students in Course
-        if (CourseManagement.enrollStudentInCourse(student1, javaCourse)) {
-            System.out.println(student1.getName() + " enrolled in " + javaCourse.getCourseName());
+            switch (choice) {
+                case 1:
+                    System.out.print("Course Code: ");
+                    String code = scanner.next();
+                    System.out.print("Course Name: ");
+                    String name = scanner.next();
+                    System.out.print("Capacity: ");
+                    int cap = scanner.nextInt();
+                    CourseManagement.addCourse(code, name, cap);
+                    break;
+                case 2:
+                    System.out.print("Course Code to enroll in: ");
+                    String courseCode = scanner.next();
+                    Course course = CourseManagement.findCourse(courseCode);
+                    if (course != null) {
+                        if (CourseManagement.enrollStudent(student, course)) {
+                            System.out.println("Enrolled successfully.");
+                        } else {
+                            System.out.println("Enrollment failed (course full or already enrolled).");
+                        }
+                    } else {
+                        System.out.println("Course not found.");
+                    }
+                    break;
+                case 3:
+                    System.out.print("Course Code: ");
+                    courseCode = scanner.next();
+                    course = CourseManagement.findCourse(courseCode);
+                    if (course != null) {
+                        System.out.print("Enter grade: ");
+                        double grade = scanner.nextDouble();
+                        CourseManagement.assignGrade(student, course, grade);
+                    } else {
+                        System.out.println("Course not found.");
+                    }
+                    break;
+                case 4:
+                    double overall = CourseManagement.calculateOverallGrade(student);
+                    System.out.println("Overall Grade: " + overall);
+                    break;
+                case 5:
+                    CourseManagement.viewCoursesAndGrades(student);
+                    break;
+                case 6:
+                    System.out.println("Goodbye!");
+                    return;
+                default:
+                    System.out.println("Invalid option.");
+            }
         }
-
-        if (CourseManagement.enrollStudentInCourse(student2, javaCourse)) {
-            System.out.println(student2.getName() + " enrolled in " + javaCourse.getCourseName());
-        }
-
-        // Assign Grades
-        CourseManagement.assignGradeToStudent(student1, javaCourse, 85);
-        CourseManagement.assignGradeToStudent(student2, javaCourse, 90);
-
-        // Calculate Overall Grade for Students
-        System.out.println(student1.getName() + "'s overall grade: " + CourseManagement.calculateOverallGrade(student1));
-        System.out.println(student2.getName() + "'s overall grade: " + CourseManagement.calculateOverallGrade(student2));
     }
 }
