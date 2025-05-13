@@ -1,62 +1,51 @@
-**Course Enrollment and Grade Management System**
+Course Enrollment and Grade Management System
 
-This is a simple Java application to manage course enrollments, student registrations, and grade assignments at a university. It includes the following features:
+This is a simple Java application to manage course enrollments, student registrations, and grade assignments at a university.
 
-Enroll students in courses.
-Assign grades to students.
-Calculate overall grades based on individual course grades.
-View enrolled courses and grades for each student.
-Project Structure
-
-Student.java – Contains the logic related to student data, course enrollments, and grade assignments.
-Course.java – Manages course-related information such as course name, code, and maximum capacity.
-CourseManagement.java – Manages the enrollment of students in courses, assignment of grades, and calculates overall grades.
-StudentTest.java – JUnit test class to test the Student class functionality (optional).
-CourseTest.java – JUnit test class to test the Course class functionality (optional).
-TestCourseEnrollmentSystem.java – Manual testing class to print results for visual verification (optional).
-Main.java – Entry point for the user interface and interaction. The program runs in a console and allows administrators to interact with the system.
 Features
 
-Add Courses: Administrators can add new courses, providing a course code, name, and capacity.
-Enroll Students: Administrators can enroll students in available courses by selecting a course and assigning a student.
-Assign Grades: Administrators can assign grades to students for enrolled courses.
-Calculate Overall Grade: Administrators can calculate a student's overall grade based on enrolled courses and their respective grades.
-View Enrolled Courses and Grades: Administrators can view the list of courses a student is enrolled in along with their grades.
+Enroll students in courses
+Assign grades to students
+Calculate overall grades based on individual course grades
+View enrolled courses and grades for each student
+Project Structure
+
+Student.java – Contains the logic related to student data, course enrollments, and grade assignments
+Course.java – Manages course-related information such as course name, code, and maximum capacity
+CourseManagement.java – Handles enrollment, grade assignment, and grade calculation
+StudentTest.java – JUnit test class for Student functionality (optional)
+CourseTest.java – JUnit test class for Course functionality (optional)
+TestCourseEnrollmentSystem.java – Manual testing class for visual verification (optional)
+Main.java – Entry point for the console-based user interface
 How to Run the Project
 
-**Prerequisites**
+Prerequisites
 JDK 8 or later
-Maven or Gradle (optional for running JUnit tests)
+Maven or Gradle (optional, for running JUnit tests)
 Running the Program
-Compile and run the Main class:
-You can use your IDE (like IntelliJ IDEA or Eclipse) to compile and run the program, or use the command line.
+You can use your IDE (like IntelliJ IDEA or Eclipse) or the command line.
+
 Using Command Line:
 
-Navigate to the directory where your Main.java file is located.
-Compile the Java file:
+# Navigate to the directory with Main.java
 javac Main.java
-Run the compiled Java program:
 java Main
-Manual Testing:
-You can test the program manually by following the interactive prompts displayed when running the Main.java file.
+Manual Testing
+Run Main.java and follow the interactive console prompts to test the system manually.
+
 Optional Testing with JUnit
 
-JUnit 5 is included for unit testing the core functionality of the Student and Course classes.
-If you have Maven or Gradle set up, run the tests with the following command:
-For Maven:
+JUnit 5 is used for unit testing.
 
+If using Maven:
 mvn test
-For Gradle:
-
+If using Gradle:
 gradle test
 Additional Notes
 
-Error Handling: The system handles common errors such as course overcapacity, invalid inputs for grades, etc.
-Extensibility: The application can be easily extended to support features like course removal, student removal, or advanced grade calculations.
-Database Integration: Currently, the project operates on in-memory data structures. For a production system, a database integration can be added for persistent data storage.
-GitHub Repository
+Error Handling: Handles errors like course overcapacity and invalid grade inputs
+Extensibility: Easy to extend for features like course/student removal or advanced grading
+Database Integration: Currently uses in-memory data; can be upgraded to use a database for persistence
+Conclusion
 
-
-**Conclusion**
-
-This project demonstrates a simple system for managing course enrollments, grade assignments, and overall grade calculation in a university setting. It provides both manual and automated testing options and is built with best practices in mind.
+This project demonstrates a basic system for managing course enrollments, assigning grades, and calculating overall student performance. It supports both manual interaction and automated testing, and it follows clean, maintainable code practices.
